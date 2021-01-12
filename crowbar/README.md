@@ -30,6 +30,6 @@ LEVERAGETODISTANCE 			|	231.74
 ### Usage
 
 ```
-cd crowbar
+cd crowbar TICKER
 go run src/main.go
 ```

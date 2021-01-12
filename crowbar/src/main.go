@@ -24,6 +24,8 @@ type Config struct {
 
 func main() {
 
+	argsWithoutProg := os.Args[1:]
+
 	f, err := os.Open("/Users/drbh/.robintools/config.yml")
 	if err != nil {
 		spew.Dump(err)
@@ -43,12 +45,11 @@ func main() {
 	}
 	c, err := robinhood.Dial(o)
 
-	tickerSymbol := "EOSE"
-
+	tickerSymbol := argsWithoutProg[0]
 	quote, _ := c.GetQuote(tickerSymbol)
 	// spew.Dump(quote)
 
-	balance := 10_000
+	balance := 1290 // 10_000
 	stockPrice := quote[0].LastTradePrice
 
 	fmt.Println(tickerSymbol, balance, stockPrice)
@@ -103,6 +104,10 @@ func main() {
 
 			relDistance := distanceFromPrice / stockPrice
 			leverage := (wholeContracts * 100) / wholeShares
+
+			if relDistance > 0.1 {
+				continue
+			}
 
 			data = append(data, []string{
 				fmt.Sprintf("%d", optionIndex),
