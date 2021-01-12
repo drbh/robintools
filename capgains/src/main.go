@@ -19,16 +19,6 @@ type BatchPrice struct {
 	Date     time.Time
 }
 
-// type CurrentOrderImpact struct {
-// 	AveragePrice float64
-// 	Quantity     float64
-// 	GainLoss     float64
-// 	Difference   float64
-// 	Side         string
-// 	State        string
-// 	Time         time.Time
-// }
-
 type Config struct {
 	Account struct {
 		Email    string `yaml:"email"`
@@ -164,16 +154,6 @@ func main() {
 				avgCostPerShare = batchPricing.TotalGainLoss / makeFloat(x.CumulativeQuantity)
 			}
 
-			// impact := CurrentOrderImpact{
-			// 	AveragePrice: x.AveragePrice,
-			// 	Quantity:     makeFloat(x.CumulativeQuantity),
-			// 	Side:         x.Side,
-			// 	State:        x.State,
-			// 	Time:         t,
-			// 	GainLoss:     profitGain,
-			// 	Difference:   diff,
-			// }
-
 			dateString := fmt.Sprintf("%d-%02d-%02dT%02d:%02d:%02d-00:00\n",
 				t.Year(), t.Month(), t.Day(),
 				t.Hour(), t.Minute(), t.Second())
@@ -235,21 +215,14 @@ func main() {
 				fmt.Sprintf("%t", isCapitalLoss),
 			})
 
-			// d, err := yaml.Marshal(&batchPricing)
-			// if err != nil {
-			// }
-			// fmt.Printf("%s", string(d))
-
-			// m, err := yaml.Marshal(&impact)
-			// if err != nil {
-			// }
-			// fmt.Printf("%s", string(m))
+			// reset if we cleared our shares
+			if batchPricing.EndQuantity == 0 {
+				batchPricing.TotalGainLoss = 0.0
+			}
 
 		}
 		table := tablewriter.NewWriter(os.Stdout)
 		table.SetHeader([]string{
-			// "Selection",
-			// "Expiration",
 			"Price",
 			"Quantity",
 			"Side",
@@ -266,9 +239,6 @@ func main() {
 			// "IsWash",
 			"IsGain",
 			"IsLoss",
-			// "RelativeDistance",
-			// "Leverage",
-			// "LeverageToDistance",
 		})
 
 		table.SetBorders(tablewriter.Border{Left: true, Top: false, Right: true, Bottom: false})
@@ -285,8 +255,6 @@ func main() {
 	gains := 0.0
 	losses := 0.0
 	for _, v := range allGainsLosses {
-		// fmt.Println(v[2020])
-
 		gains += v[2020].TotalGains
 		losses += v[2020].TotalLosses
 	}
