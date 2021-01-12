@@ -33,7 +33,3 @@ LEVERAGETODISTANCE 			|	231.74
 cd crowbar
 go run src/main.go
 ```
-
-you may want to save the output to read through each companys. try adding `> record.txt` to the above command to save the output.
-
-also note, sometimes companies change their tickers and their unique identifer from robinhood. This can cause strange looking captial gains for those companies because this script does not know they are the same company. 
