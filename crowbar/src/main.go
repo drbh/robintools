@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/andrewstuart/go-robinhood"
+	"github.com/drbh/go-robinhood" // until changes get merged
 	"github.com/davecgh/go-spew/spew"
 	"github.com/olekukonko/tablewriter"
 	"gopkg.in/yaml.v2"
@@ -43,7 +43,7 @@ func main() {
 	}
 	c, err := robinhood.Dial(o)
 
-	tickerSymbol := "IPOF"
+	tickerSymbol := "EOSE"
 
 	quote, _ := c.GetQuote(tickerSymbol)
 	// spew.Dump(quote)

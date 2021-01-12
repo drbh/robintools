@@ -6,7 +6,8 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/andrewstuart/go-robinhood"
+	"github.com/drbh/go-robinhood" // until changes get merged
+	// "github.com/andrewstuart/go-robinhood"
 	"github.com/davecgh/go-spew/spew"
 	"gopkg.in/yaml.v2"
 )
