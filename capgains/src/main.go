@@ -9,6 +9,7 @@ import (
 	"github.com/drbh/go-robinhood" // until changes get merged
 	// "github.com/andrewstuart/go-robinhood"
 	"github.com/davecgh/go-spew/spew"
+	"github.com/olekukonko/tablewriter"
 	"gopkg.in/yaml.v2"
 )
 
@@ -18,15 +19,15 @@ type BatchPrice struct {
 	Date     time.Time
 }
 
-type CurrentOrderImpact struct {
-	AveragePrice float64
-	Quantity     float64
-	GainLoss     float64
-	Difference   float64
-	Side         string
-	State        string
-	Time         time.Time
-}
+// type CurrentOrderImpact struct {
+// 	AveragePrice float64
+// 	Quantity     float64
+// 	GainLoss     float64
+// 	Difference   float64
+// 	Side         string
+// 	State        string
+// 	Time         time.Time
+// }
 
 type Config struct {
 	Account struct {
@@ -34,6 +35,13 @@ type Config struct {
 		Password string `yaml:"password"`
 	} `yaml:"account"`
 }
+
+type Results struct {
+	TotalGains  float64
+	TotalLosses float64
+}
+
+type GainsLosses map[int]Results
 
 func main() {
 
@@ -73,14 +81,16 @@ func main() {
 		instrumentMap[x.Instrument] = append(instrumentMap[x.Instrument], x)
 	}
 
-	for i := range instrumentMap {
+	allGainsLosses := make([]GainsLosses, 1, 1)
 
+	for i := range instrumentMap {
 		instum, _ := c.GetInstrument(i)
 
-		fmt.Println("\n\n\n##########################")
+		// if instum.Symbol != "GILD" {
+		// 	continue
+		// }
 
-		fmt.Println(instum.Name)
-		fmt.Println(instum.Symbol)
+		fmt.Printf("\n(%s)\t%s\n", instum.Symbol, instum.Name)
 
 		// spew.Dump(instum)
 
@@ -91,8 +101,13 @@ func main() {
 			Executions    []BatchPrice
 			TotalGainLoss float64
 		}
+
+		mapOfGainsLosses := make(GainsLosses)
+
+		data := [][]string{}
+
 		for i := range s {
-			fmt.Println("\n-")
+			// fmt.Println("\n-")
 			x := s[len(s)-1-i]
 			t, err := time.Parse(time.RFC3339, x.LastTransactionAt)
 
@@ -106,7 +121,14 @@ func main() {
 			}
 
 			profitGain := 0.0
+
+			avgCostPerShare := 0.0
+
 			if x.Side == "buy" {
+
+				// if a wash sale
+				// was the last sale a loss within 30 days?
+
 				batchPricing.EndQuantity += makeFloat(x.CumulativeQuantity)
 				batchPricing.Executions = append(batchPricing.Executions, BatchPrice{Date: t, Price: x.AveragePrice, Quantity: makeFloat(x.CumulativeQuantity)})
 				profitGain -= x.AveragePrice * makeFloat(x.CumulativeQuantity)
@@ -135,28 +157,161 @@ func main() {
 
 			batchPricing.TotalGainLoss += profitGain
 
-			impact := CurrentOrderImpact{
-				AveragePrice: x.AveragePrice,
-				Quantity:     makeFloat(x.CumulativeQuantity),
-				Side:         x.Side,
-				State:        x.State,
-				Time:         t,
-				GainLoss:     profitGain,
-				Difference:   diff,
+			if x.Side == "buy" {
+				avgCostPerShare = batchPricing.TotalGainLoss / batchPricing.EndQuantity
+			}
+			if x.Side == "sell" {
+				avgCostPerShare = batchPricing.TotalGainLoss / makeFloat(x.CumulativeQuantity)
 			}
 
-			d, err := yaml.Marshal(&batchPricing)
-			if err != nil {
-			}
-			fmt.Printf("%s", string(d))
+			// impact := CurrentOrderImpact{
+			// 	AveragePrice: x.AveragePrice,
+			// 	Quantity:     makeFloat(x.CumulativeQuantity),
+			// 	Side:         x.Side,
+			// 	State:        x.State,
+			// 	Time:         t,
+			// 	GainLoss:     profitGain,
+			// 	Difference:   diff,
+			// }
 
-			m, err := yaml.Marshal(&impact)
-			if err != nil {
+			dateString := fmt.Sprintf("%d-%02d-%02dT%02d:%02d:%02d-00:00\n",
+				t.Year(), t.Month(), t.Day(),
+				t.Hour(), t.Minute(), t.Second())
+
+			isCapitalLoss := false
+			if batchPricing.TotalGainLoss < 0 {
+				if batchPricing.EndQuantity < makeFloat(x.CumulativeQuantity) {
+					isCapitalLoss = true
+				}
 			}
-			fmt.Printf("%s", string(m))
+
+			isCapitalGain := false
+			if batchPricing.TotalGainLoss > 0 {
+				if batchPricing.EndQuantity < makeFloat(x.CumulativeQuantity) {
+					isCapitalGain = true
+				}
+			}
+
+			_, ok := mapOfGainsLosses[t.Year()]
+			if ok {
+			} else {
+				var val = Results{
+					TotalGains:  0,
+					TotalLosses: 0,
+				}
+				mapOfGainsLosses[t.Year()] = val
+			}
+
+			value, _ := mapOfGainsLosses[t.Year()]
+
+			if isCapitalGain {
+				value.TotalGains += batchPricing.TotalGainLoss
+			}
+			if isCapitalLoss {
+				value.TotalLosses -= batchPricing.TotalGainLoss
+			}
+			mapOfGainsLosses[t.Year()] = value
+
+			// spew.Dump(value)
+
+			data = append(data, []string{
+				// fmt.Sprintf("%d", optionIndex),
+				// fmt.Sprintf(date),
+				fmt.Sprintf("%.2f", x.AveragePrice),
+				fmt.Sprintf("%.2f", makeFloat(x.CumulativeQuantity)),
+				fmt.Sprintf(x.Side),
+				fmt.Sprintf(x.State),
+				fmt.Sprintf("%d", t.Year()),
+				fmt.Sprintf(dateString),
+				fmt.Sprintf("%.2f", profitGain),
+				fmt.Sprintf("%.2f", diff),
+				fmt.Sprintf("%.2f", batchPricing.TotalGainLoss),
+				fmt.Sprintf("%.2f", batchPricing.EndQuantity),
+				fmt.Sprintf("%d", len(batchPricing.Executions)),
+				fmt.Sprintf("%.2f", avgCostPerShare),
+
+				// fmt.Sprintf("%t", false),
+				fmt.Sprintf("%t", isCapitalGain),
+				fmt.Sprintf("%t", isCapitalLoss),
+			})
+
+			// d, err := yaml.Marshal(&batchPricing)
+			// if err != nil {
+			// }
+			// fmt.Printf("%s", string(d))
+
+			// m, err := yaml.Marshal(&impact)
+			// if err != nil {
+			// }
+			// fmt.Printf("%s", string(m))
 
 		}
+		table := tablewriter.NewWriter(os.Stdout)
+		table.SetHeader([]string{
+			// "Selection",
+			// "Expiration",
+			"Price",
+			"Quantity",
+			"Side",
+			"State",
+			"Year",
+			"Timestamp",
+			"ProfitGain",
+			"DaysHeld",
+			"TotalGainLoss",
+			"EndQuantity",
+			"NumberOrders",
+			"AvgCostPerShare",
+
+			// "IsWash",
+			"IsGain",
+			"IsLoss",
+			// "RelativeDistance",
+			// "Leverage",
+			// "LeverageToDistance",
+		})
+
+		table.SetBorders(tablewriter.Border{Left: true, Top: false, Right: true, Bottom: false})
+		table.SetCenterSeparator("|")
+		table.AppendBulk(data)
+		table.Render()
+
+		allGainsLosses = append(allGainsLosses, mapOfGainsLosses)
+		// spew.Dump(mapOfGainsLosses)
 	}
+
+	fmt.Println("\n\nTOTALS FOR 2020")
+
+	gains := 0.0
+	losses := 0.0
+	for _, v := range allGainsLosses {
+		// fmt.Println(v[2020])
+
+		gains += v[2020].TotalGains
+		losses += v[2020].TotalLosses
+	}
+
+	mydata := [][]string{}
+	mydata = append(mydata, []string{
+		fmt.Sprintf("%.2f", gains),
+		fmt.Sprintf("%.2f", losses),
+		fmt.Sprintf("%.2f", gains-losses),
+		fmt.Sprintf("%.2f", (gains-losses)*0.3),
+	})
+
+	table := tablewriter.NewWriter(os.Stdout)
+	table.SetHeader([]string{
+		"Gains",
+		"Losses",
+		"Net",
+		"Tax",
+	})
+
+	table.SetBorders(tablewriter.Border{Left: true, Top: false, Right: true, Bottom: false})
+	table.SetCenterSeparator("|")
+	table.AppendBulk(mydata)
+	table.Render()
+
 }
 
 func makeFloat(val string) float64 {
