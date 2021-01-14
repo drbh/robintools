@@ -9,8 +9,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/drbh/go-robinhood" // until changes get merged
 	"github.com/davecgh/go-spew/spew"
+	"github.com/drbh/go-robinhood"
 	"github.com/olekukonko/tablewriter"
 	"gopkg.in/yaml.v2"
 )
@@ -20,6 +20,11 @@ type Config struct {
 		Email    string `yaml:"email"`
 		Password string `yaml:"password"`
 	} `yaml:"account"`
+}
+
+func makeFloat(val string) float64 {
+	b2, _ := strconv.ParseFloat(val, 64)
+	return b2
 }
 
 func main() {
@@ -47,9 +52,8 @@ func main() {
 
 	tickerSymbol := argsWithoutProg[0]
 	quote, _ := c.GetQuote(tickerSymbol)
-	// spew.Dump(quote)
 
-	balance := 1290 // 10_000
+	balance := makeFloat(argsWithoutProg[1])
 	stockPrice := quote[0].LastTradePrice
 
 	fmt.Println(tickerSymbol, balance, stockPrice)
@@ -105,8 +109,14 @@ func main() {
 			relDistance := distanceFromPrice / stockPrice
 			leverage := (wholeContracts * 100) / wholeShares
 
-			if relDistance > 0.1 {
-				continue
+			if len(argsWithoutProg) > 2 {
+
+				filterRelDistanceThreshold := argsWithoutProg[2]
+				if filterRelDistanceThreshold != "" {
+					if relDistance > makeFloat(filterRelDistanceThreshold) {
+						continue
+					}
+				}
 			}
 
 			data = append(data, []string{
@@ -114,6 +124,7 @@ func main() {
 				fmt.Sprintf(date),
 				fmt.Sprintf("%.2f", strike),
 				fmt.Sprintf("%.2f", optPriceUsed),
+				fmt.Sprintf("%.0f", wholeContracts*100),
 				fmt.Sprintf("%.0f", wholeContracts),
 				fmt.Sprintf("%.0f", wholeShares),
 				fmt.Sprintf("%.2f", optBreakEvenUsed),
@@ -122,6 +133,8 @@ func main() {
 				fmt.Sprintf("%.2f", relDistance),
 				fmt.Sprintf("%.2f", leverage),
 				fmt.Sprintf("%.2f", leverage/relDistance),
+				fmt.Sprintf("%.4f", math.Atan(wholeShares)*180.0/math.Pi),
+				fmt.Sprintf("%.4f", math.Atan(wholeContracts*100)*180.0/math.Pi),
 			})
 		}
 	}
@@ -131,6 +144,7 @@ func main() {
 		"Expiration",
 		"Strike",
 		"Price",
+		"Control",
 		"Contracts",
 		"Shares",
 		"Breakeven",
@@ -139,6 +153,8 @@ func main() {
 		"RelativeDistance",
 		"Leverage",
 		"LeverageToDistance",
+		"EquityDeg",
+		"OptionDeg",
 	})
 
 	table.SetBorders(tablewriter.Border{Left: true, Top: false, Right: true, Bottom: false})

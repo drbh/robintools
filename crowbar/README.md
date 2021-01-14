@@ -10,26 +10,9 @@ You might ask yourself the following questions:
 
 Basiclly you want your dollars to work as hard as they can and be as leveraged as possible and minimize the distance between the current price and your breakeven.
 
-example of columns an values    
-```
-SELECTION 				|	0 
-EXPIRATION 				|	2021-01-15 
-STRIKE 					|	10.00 
-PRICE 					|	4.40 
-CONTRACTS 				|	22 
-SHARES 					|	699 
-BREAKEVEN 				|	14.40 
-CONTRACTBREAK 				|	14.49 
-DISTANCE 				|	0.19 
-RELATIVEDISTANCE 			|	0.01 
-LEVERAGE 				|	3.15 
-LEVERAGETODISTANCE 			|	231.74 
-```
-
-
 ### Usage
 
 ```
-cd crowbar TICKER
-go run src/main.go
+cd crowbar 
+go run src/main.go <TICKER> <BALANCE> <DISTANCE_THRESHOLD>
 ```

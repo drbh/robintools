@@ -280,6 +280,36 @@ func main() {
 	table.AppendBulk(mydata)
 	table.Render()
 
+	fmt.Println("\n\nTOTALS FOR 2021")
+
+	gains = 0.0
+	losses = 0.0
+	for _, v := range allGainsLosses {
+		gains += v[2021].TotalGains
+		losses += v[2021].TotalLosses
+	}
+
+	mydata = [][]string{}
+	mydata = append(mydata, []string{
+		fmt.Sprintf("%.2f", gains),
+		fmt.Sprintf("%.2f", losses),
+		fmt.Sprintf("%.2f", gains-losses),
+		fmt.Sprintf("%.2f", (gains-losses)*0.3),
+	})
+
+	table = tablewriter.NewWriter(os.Stdout)
+	table.SetHeader([]string{
+		"Gains",
+		"Losses",
+		"Net",
+		"Tax",
+	})
+
+	table.SetBorders(tablewriter.Border{Left: true, Top: false, Right: true, Bottom: false})
+	table.SetCenterSeparator("|")
+	table.AppendBulk(mydata)
+	table.Render()
+
 }
 
 func makeFloat(val string) float64 {
