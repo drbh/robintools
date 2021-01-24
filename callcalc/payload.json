@@ -1,0 +1,571 @@
+{
+  "2021-02-19": {
+    "5.00": {
+      "optBreakEvenUsed": "23.90",
+      "stockPrice": "23.48",
+      "date": "2021-02-19",
+      "x": "16.48",
+      "y": "-1484.00",
+      "optionprice": "18.90",
+      "strike": "5.00",
+      "contracts": "2.00",
+      "shares": "212.00"
+    },
+    "17.50": {
+      "optBreakEvenUsed": "24.00",
+      "stockPrice": "23.48",
+      "date": "2021-02-19",
+      "x": "24.23",
+      "y": "158.13",
+      "optionprice": "6.50",
+      "strike": "17.50",
+      "contracts": "7.00",
+      "shares": "212.00"
+    },
+    "45.00": {
+      "optBreakEvenUsed": "45.40",
+      "stockPrice": "23.48",
+      "date": "2021-02-19",
+      "x": "45.78",
+      "y": "4727.21",
+      "optionprice": "0.40",
+      "strike": "45.00",
+      "contracts": "125.00",
+      "shares": "212.00"
+    },
+    "10.00": {
+      "optBreakEvenUsed": "23.90",
+      "stockPrice": "23.48",
+      "date": "2021-02-19",
+      "x": "24.91",
+      "y": "303.55",
+      "optionprice": "13.90",
+      "strike": "10.00",
+      "contracts": "3.00",
+      "shares": "212.00"
+    },
+    "22.50": {
+      "optBreakEvenUsed": "25.50",
+      "stockPrice": "23.48",
+      "date": "2021-02-19",
+      "x": "25.81",
+      "y": "493.65",
+      "optionprice": "3.00",
+      "strike": "22.50",
+      "contracts": "16.00",
+      "shares": "212.00"
+    },
+    "7.50": {
+      "optBreakEvenUsed": "23.90",
+      "stockPrice": "23.48",
+      "date": "2021-02-19",
+      "x": "24.91",
+      "y": "303.55",
+      "optionprice": "16.40",
+      "strike": "7.50",
+      "contracts": "3.00",
+      "shares": "212.00"
+    },
+    "25.00": {
+      "optBreakEvenUsed": "27.30",
+      "stockPrice": "23.48",
+      "date": "2021-02-19",
+      "x": "27.73",
+      "y": "900.78",
+      "optionprice": "2.30",
+      "strike": "25.00",
+      "contracts": "21.00",
+      "shares": "212.00"
+    },
+    "35.00": {
+      "optBreakEvenUsed": "35.60",
+      "stockPrice": "23.48",
+      "date": "2021-02-19",
+      "x": "35.92",
+      "y": "2636.79",
+      "optionprice": "0.60",
+      "strike": "35.00",
+      "contracts": "83.00",
+      "shares": "212.00"
+    },
+    "2.50": {
+      "optBreakEvenUsed": "23.90",
+      "stockPrice": "23.48",
+      "date": "2021-02-19",
+      "x": "16.48",
+      "y": "-1484.00",
+      "optionprice": "21.40",
+      "strike": "2.50",
+      "contracts": "2.00",
+      "shares": "212.00"
+    },
+    "20.00": {
+      "optBreakEvenUsed": "24.60",
+      "stockPrice": "23.48",
+      "date": "2021-02-19",
+      "x": "24.90",
+      "y": "301.32",
+      "optionprice": "4.60",
+      "strike": "20.00",
+      "contracts": "10.00",
+      "shares": "212.00"
+    },
+    "12.50": {
+      "optBreakEvenUsed": "23.90",
+      "stockPrice": "23.48",
+      "date": "2021-02-19",
+      "x": "24.37",
+      "y": "189.45",
+      "optionprice": "11.40",
+      "strike": "12.50",
+      "contracts": "4.00",
+      "shares": "212.00"
+    },
+    "30.00": {
+      "optBreakEvenUsed": "31.20",
+      "stockPrice": "23.48",
+      "date": "2021-02-19",
+      "x": "31.62",
+      "y": "1725.88",
+      "optionprice": "1.20",
+      "strike": "30.00",
+      "contracts": "41.00",
+      "shares": "212.00"
+    },
+    "15.00": {
+      "optBreakEvenUsed": "23.80",
+      "stockPrice": "23.48",
+      "date": "2021-02-19",
+      "x": "24.04",
+      "y": "117.78",
+      "optionprice": "8.80",
+      "strike": "15.00",
+      "contracts": "5.00",
+      "shares": "212.00"
+    },
+    "40.00": {
+      "optBreakEvenUsed": "40.35",
+      "stockPrice": "23.48",
+      "date": "2021-02-19",
+      "x": "40.61",
+      "y": "3630.64",
+      "optionprice": "0.35",
+      "strike": "40.00",
+      "contracts": "142.00",
+      "shares": "212.00"
+    }
+  },
+  "2021-03-19": {
+    "20.00": {
+      "optBreakEvenUsed": "25.80",
+      "stockPrice": "23.48",
+      "date": "2021-03-19",
+      "x": "26.64",
+      "y": "669.17",
+      "optionprice": "5.80",
+      "strike": "20.00",
+      "contracts": "8.00",
+      "shares": "212.00"
+    },
+    "35.00": {
+      "optBreakEvenUsed": "36.70",
+      "stockPrice": "23.48",
+      "date": "2021-03-19",
+      "x": "37.74",
+      "y": "3023.68",
+      "optionprice": "1.70",
+      "strike": "35.00",
+      "contracts": "29.00",
+      "shares": "212.00"
+    },
+    "30.00": {
+      "optBreakEvenUsed": "32.50",
+      "stockPrice": "23.48",
+      "date": "2021-03-19",
+      "x": "33.57",
+      "y": "2138.97",
+      "optionprice": "2.50",
+      "strike": "30.00",
+      "contracts": "20.00",
+      "shares": "212.00"
+    },
+    "40.00": {
+      "optBreakEvenUsed": "41.15",
+      "stockPrice": "23.48",
+      "date": "2021-03-19",
+      "x": "42.07",
+      "y": "3940.31",
+      "optionprice": "1.15",
+      "strike": "40.00",
+      "contracts": "43.00",
+      "shares": "212.00"
+    },
+    "17.50": {
+      "optBreakEvenUsed": "24.80",
+      "stockPrice": "23.48",
+      "date": "2021-03-19",
+      "x": "25.52",
+      "y": "432.74",
+      "optionprice": "7.30",
+      "strike": "17.50",
+      "contracts": "6.00",
+      "shares": "212.00"
+    },
+    "22.50": {
+      "optBreakEvenUsed": "27.20",
+      "stockPrice": "23.48",
+      "date": "2021-03-19",
+      "x": "28.20",
+      "y": "1000.81",
+      "optionprice": "4.70",
+      "strike": "22.50",
+      "contracts": "10.00",
+      "shares": "212.00"
+    },
+    "45.00": {
+      "optBreakEvenUsed": "45.85",
+      "stockPrice": "23.48",
+      "date": "2021-03-19",
+      "x": "46.70",
+      "y": "4922.36",
+      "optionprice": "0.85",
+      "strike": "45.00",
+      "contracts": "58.00",
+      "shares": "212.00"
+    },
+    "15.00": {
+      "optBreakEvenUsed": "24.00",
+      "stockPrice": "23.48",
+      "date": "2021-03-19",
+      "x": "24.38",
+      "y": "191.39",
+      "optionprice": "9.00",
+      "strike": "15.00",
+      "contracts": "5.00",
+      "shares": "212.00"
+    },
+    "25.00": {
+      "optBreakEvenUsed": "28.80",
+      "stockPrice": "23.48",
+      "date": "2021-03-19",
+      "x": "29.84",
+      "y": "1347.60",
+      "optionprice": "3.80",
+      "strike": "25.00",
+      "contracts": "13.00",
+      "shares": "212.00"
+    }
+  },
+  "2021-08-20": {
+    "15.00": {
+      "optBreakEvenUsed": "25.70",
+      "stockPrice": "23.48",
+      "date": "2021-08-20",
+      "x": "28.20",
+      "y": "1001.36",
+      "optionprice": "10.70",
+      "strike": "15.00",
+      "contracts": "4.00",
+      "shares": "212.00"
+    },
+    "35.00": {
+      "optBreakEvenUsed": "39.40",
+      "stockPrice": "23.48",
+      "date": "2021-08-20",
+      "x": "43.20",
+      "y": "4180.79",
+      "optionprice": "4.40",
+      "strike": "35.00",
+      "contracts": "11.00",
+      "shares": "212.00"
+    },
+    "25.00": {
+      "optBreakEvenUsed": "31.50",
+      "stockPrice": "23.48",
+      "date": "2021-08-20",
+      "x": "34.98",
+      "y": "2438.87",
+      "optionprice": "6.50",
+      "strike": "25.00",
+      "contracts": "7.00",
+      "shares": "212.00"
+    },
+    "20.00": {
+      "optBreakEvenUsed": "28.50",
+      "stockPrice": "23.48",
+      "date": "2021-08-20",
+      "x": "32.20",
+      "y": "1847.64",
+      "optionprice": "8.50",
+      "strike": "20.00",
+      "contracts": "5.00",
+      "shares": "212.00"
+    },
+    "12.50": {
+      "optBreakEvenUsed": "24.70",
+      "stockPrice": "23.48",
+      "date": "2021-08-20",
+      "x": "26.08",
+      "y": "550.30",
+      "optionprice": "12.20",
+      "strike": "12.50",
+      "contracts": "4.00",
+      "shares": "212.00"
+    },
+    "5.00": {
+      "optBreakEvenUsed": "24.20",
+      "stockPrice": "23.48",
+      "date": "2021-08-20",
+      "x": "11.48",
+      "y": "-2544.00",
+      "optionprice": "19.20",
+      "strike": "5.00",
+      "contracts": "2.00",
+      "shares": "212.00"
+    },
+    "7.50": {
+      "optBreakEvenUsed": "24.20",
+      "stockPrice": "23.48",
+      "date": "2021-08-20",
+      "x": "11.48",
+      "y": "-2544.00",
+      "optionprice": "16.70",
+      "strike": "7.50",
+      "contracts": "2.00",
+      "shares": "212.00"
+    },
+    "22.50": {
+      "optBreakEvenUsed": "30.10",
+      "stockPrice": "23.48",
+      "date": "2021-08-20",
+      "x": "33.72",
+      "y": "2170.27",
+      "optionprice": "7.60",
+      "strike": "22.50",
+      "contracts": "6.00",
+      "shares": "212.00"
+    },
+    "40.00": {
+      "optBreakEvenUsed": "43.70",
+      "stockPrice": "23.48",
+      "date": "2021-08-20",
+      "x": "47.64",
+      "y": "5121.90",
+      "optionprice": "3.70",
+      "strike": "40.00",
+      "contracts": "13.00",
+      "shares": "212.00"
+    },
+    "30.00": {
+      "optBreakEvenUsed": "35.40",
+      "stockPrice": "23.48",
+      "date": "2021-08-20",
+      "x": "39.07",
+      "y": "3305.72",
+      "optionprice": "5.40",
+      "strike": "30.00",
+      "contracts": "9.00",
+      "shares": "212.00"
+    },
+    "10.00": {
+      "optBreakEvenUsed": "24.10",
+      "stockPrice": "23.48",
+      "date": "2021-08-20",
+      "x": "25.59",
+      "y": "448.09",
+      "optionprice": "14.10",
+      "strike": "10.00",
+      "contracts": "3.00",
+      "shares": "212.00"
+    },
+    "2.50": {
+      "optBreakEvenUsed": "24.30",
+      "stockPrice": "23.48",
+      "date": "2021-08-20",
+      "x": "9.81",
+      "y": "-2897.33",
+      "optionprice": "21.80",
+      "strike": "2.50",
+      "contracts": "2.00",
+      "shares": "212.00"
+    },
+    "45.00": {
+      "optBreakEvenUsed": "47.95",
+      "stockPrice": "23.48",
+      "date": "2021-08-20",
+      "x": "51.69",
+      "y": "5979.99",
+      "optionprice": "2.95",
+      "strike": "45.00",
+      "contracts": "16.00",
+      "shares": "212.00"
+    },
+    "17.50": {
+      "optBreakEvenUsed": "26.90",
+      "stockPrice": "23.48",
+      "date": "2021-08-20",
+      "x": "29.42",
+      "y": "1258.75",
+      "optionprice": "9.40",
+      "strike": "17.50",
+      "contracts": "5.00",
+      "shares": "212.00"
+    }
+  },
+  "2021-05-21": {
+    "22.50": {
+      "optBreakEvenUsed": "28.60",
+      "stockPrice": "23.48",
+      "date": "2021-05-21",
+      "x": "30.45",
+      "y": "1476.79",
+      "optionprice": "6.10",
+      "strike": "22.50",
+      "contracts": "8.00",
+      "shares": "212.00"
+    },
+    "30.00": {
+      "optBreakEvenUsed": "33.80",
+      "stockPrice": "23.48",
+      "date": "2021-05-21",
+      "x": "35.81",
+      "y": "2614.15",
+      "optionprice": "3.80",
+      "strike": "30.00",
+      "contracts": "13.00",
+      "shares": "212.00"
+    },
+    "15.00": {
+      "optBreakEvenUsed": "24.70",
+      "stockPrice": "23.48",
+      "date": "2021-05-21",
+      "x": "25.60",
+      "y": "449.03",
+      "optionprice": "9.70",
+      "strike": "15.00",
+      "contracts": "5.00",
+      "shares": "212.00"
+    },
+    "35.00": {
+      "optBreakEvenUsed": "38.00",
+      "stockPrice": "23.48",
+      "date": "2021-05-21",
+      "x": "40.22",
+      "y": "3548.40",
+      "optionprice": "3.00",
+      "strike": "35.00",
+      "contracts": "16.00",
+      "shares": "212.00"
+    },
+    "17.50": {
+      "optBreakEvenUsed": "25.70",
+      "stockPrice": "23.48",
+      "date": "2021-05-21",
+      "x": "26.91",
+      "y": "727.79",
+      "optionprice": "8.20",
+      "strike": "17.50",
+      "contracts": "6.00",
+      "shares": "212.00"
+    },
+    "2.50": {
+      "optBreakEvenUsed": "24.10",
+      "stockPrice": "23.48",
+      "date": "2021-05-21",
+      "x": "13.15",
+      "y": "-2190.67",
+      "optionprice": "21.60",
+      "strike": "2.50",
+      "contracts": "2.00",
+      "shares": "212.00"
+    },
+    "12.50": {
+      "optBreakEvenUsed": "24.00",
+      "stockPrice": "23.48",
+      "date": "2021-05-21",
+      "x": "24.59",
+      "y": "234.55",
+      "optionprice": "11.50",
+      "strike": "12.50",
+      "contracts": "4.00",
+      "shares": "212.00"
+    },
+    "10.00": {
+      "optBreakEvenUsed": "24.00",
+      "stockPrice": "23.48",
+      "date": "2021-05-21",
+      "x": "25.25",
+      "y": "375.82",
+      "optionprice": "14.00",
+      "strike": "10.00",
+      "contracts": "3.00",
+      "shares": "212.00"
+    },
+    "20.00": {
+      "optBreakEvenUsed": "27.10",
+      "stockPrice": "23.48",
+      "date": "2021-05-21",
+      "x": "28.67",
+      "y": "1100.84",
+      "optionprice": "7.10",
+      "strike": "20.00",
+      "contracts": "7.00",
+      "shares": "212.00"
+    },
+    "5.00": {
+      "optBreakEvenUsed": "24.10",
+      "stockPrice": "23.48",
+      "date": "2021-05-21",
+      "x": "13.15",
+      "y": "-2190.67",
+      "optionprice": "19.10",
+      "strike": "5.00",
+      "contracts": "2.00",
+      "shares": "212.00"
+    },
+    "7.50": {
+      "optBreakEvenUsed": "24.10",
+      "stockPrice": "23.48",
+      "date": "2021-05-21",
+      "x": "25.59",
+      "y": "448.09",
+      "optionprice": "16.60",
+      "strike": "7.50",
+      "contracts": "3.00",
+      "shares": "212.00"
+    },
+    "40.00": {
+      "optBreakEvenUsed": "42.25",
+      "stockPrice": "23.48",
+      "date": "2021-05-21",
+      "x": "44.25",
+      "y": "4403.59",
+      "optionprice": "2.25",
+      "strike": "40.00",
+      "contracts": "22.00",
+      "shares": "212.00"
+    },
+    "25.00": {
+      "optBreakEvenUsed": "30.20",
+      "stockPrice": "23.48",
+      "date": "2021-05-21",
+      "x": "32.27",
+      "y": "1863.63",
+      "optionprice": "5.20",
+      "strike": "25.00",
+      "contracts": "9.00",
+      "shares": "212.00"
+    },
+    "45.00": {
+      "optBreakEvenUsed": "46.80",
+      "stockPrice": "23.48",
+      "date": "2021-05-21",
+      "x": "48.79",
+      "y": "5365.10",
+      "optionprice": "1.80",
+      "strike": "45.00",
+      "contracts": "27.00",
+      "shares": "212.00"
+    }
+  }
+}
