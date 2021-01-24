@@ -70,6 +70,9 @@ func main() {
 
 	data := [][]string{}
 
+
+	currentTime := time.Now()
+
 	for optionIndex, date := range ch[0].ExpirationDates {
 
 		dateInts := strings.Split(date, "-")
@@ -96,9 +99,11 @@ func main() {
 			wholeShares := math.Floor(float64(balance) / stockPrice)
 
 			x, _ := findIntersection(
-				optBreakEvenUsed, 0.0, float64(1000), (float64(1000)-optBreakEvenUsed)*wholeContracts*100,
-				0.0, 0.0, float64(1000), float64(1000)*stockPrice,
+				optBreakEvenUsed, 0.0, float64(1000), (float64(1000)-optBreakEvenUsed)*(wholeContracts*100),
+				stockPrice, 0.0, float64(1000), (float64(1000)*wholeShares)-(wholeShares*stockPrice),
 			)
+
+
 
 			distanceFromPrice := x - stockPrice
 
@@ -118,6 +123,9 @@ func main() {
 					}
 				}
 			}
+			t, _ := time.Parse("2006-01-02", date)
+
+			daysUntilExpiration := t.Sub(currentTime).Hours() / 24
 
 			data = append(data, []string{
 				fmt.Sprintf("%d", optionIndex),
@@ -135,6 +143,7 @@ func main() {
 				fmt.Sprintf("%.2f", leverage/relDistance),
 				fmt.Sprintf("%.4f", math.Atan(wholeShares)*180.0/math.Pi),
 				fmt.Sprintf("%.4f", math.Atan(wholeContracts*100)*180.0/math.Pi),
+				fmt.Sprintf("%.2f", daysUntilExpiration),
 			})
 		}
 	}
@@ -155,6 +164,7 @@ func main() {
 		"LeverageToDistance",
 		"EquityDeg",
 		"OptionDeg",
+		"DaysUntilExpiration",
 	})
 
 	table.SetBorders(tablewriter.Border{Left: true, Top: false, Right: true, Bottom: false})
